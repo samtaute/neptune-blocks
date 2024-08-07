@@ -18,8 +18,15 @@ function BlockPhotocard({ items }: { items: ContentEntity[] }) {
     <>
       {items.map((item) => {
         return (
-          <BlockItemContainer key={item.title} link={item.link} image={item.wideImage}>
-          </BlockItemContainer>
+          <PhotocardContainer
+            key={item.title}
+            link={item.link}
+            image={item.wideImage}
+          >
+            <PhotocardLogo logo={item.brandLogo} />
+            <PhotocardTitle title={item.title}></PhotocardTitle>
+            <PhotocardFooter/>
+          </PhotocardContainer>
         );
       })}
     </>
@@ -28,24 +35,40 @@ function BlockPhotocard({ items }: { items: ContentEntity[] }) {
 
 export default BlockPhotocard;
 
-function BlockItemContainer({
+function PhotocardContainer({
   children,
   link,
   image,
 }: PropsWithChildren<{ link: string; image: string }>) {
-    
-const backgroundImage = {
+  const backgroundImage = {
     backgroundImage: `linear-gradient(0deg, rgba(0, 3, 21, 0.85) 0%, rgba(0, 3, 21, 0) 70%, rgba(0, 3, 21, 0) 70%, rgba(0, 3, 21, 0) 100%), url(${image})`,
-    
-}
+  };
 
   return (
     <a
-      style={backgroundImage}  
+      style={backgroundImage}
       href={link}
-      className={"relative flex flex-col rounded-lg bg-cover h-[254px]"}
+      className={
+        "relative flex flex-col rounded-lg bg-cover h-[254px] justify-end p-4 mb-2"
+      }
     >
       {children}
     </a>
   );
+}
+
+function PhotocardTitle({ title }: { title: string }) {
+  return <h2 className="text-white text-base drop-shadow-sm font-semibold my-2">{title}</h2>;
+}
+
+function PhotocardLogo({ logo }: { logo: string }) {
+  return (
+    <div className="flex items-start">
+      <img src={logo} alt="publisher logo" className="h-4" />
+    </div>
+  );
+}
+
+function PhotocardFooter() {
+  return <div className="h-6 text-[#ededed] flex items-end justify-between"><div className="text-[11px] font-normal text-white">popular</div></div>;
 }

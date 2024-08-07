@@ -7,10 +7,11 @@ type TemplateProps = {
 
 function TemplateDailyBrief({ content }: { content: TemplateProps }) {
   const categories = Object.keys(content);
-
+  const numCategories = categories.length; //use in template 
+  console.log(numCategories)
   return (
     <>
-      <PhotocardBlock items={content[categories[0]]} />
+      <PhotocardBlock items={content['standard']} />
     </>
   );
 }

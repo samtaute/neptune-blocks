@@ -32,7 +32,7 @@ export async function fetchSoftboxContent(category: string, language: string){
                 owner: item['owner'],
                 brandLogo: item.brandLogo,
                 brandLogoDark: item.brandLogoDark,
-                wideImage: item.previews[1]?.link, //todo why are some links not available?
+                wideImage: item.previews[0]?.link, //todo why are some links not available?
                 link: item.link,
             }
         })
