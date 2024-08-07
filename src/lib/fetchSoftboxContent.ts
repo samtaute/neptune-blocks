@@ -34,6 +34,7 @@ export async function fetchSoftboxContent(category: string, language: string){
                 brandLogoDark: item.brandLogoDark,
                 wideImage: item.previews[0]?.link, //todo why are some links not available?
                 link: item.link,
+                uid: item.uid,
             }
         })
     }

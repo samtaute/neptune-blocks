@@ -17,6 +17,6 @@ export default FeedPage;
 
 
 function FeedContainer({children}: PropsWithChildren){
-    return <div className="mx-auto max-w-[410px] min-h-40 flex flex-col">{children}</div>
+    return <div className="mx-auto max-w-[450px] px-[20px] min-h-40 flex flex-col">{children}</div>
 }
 

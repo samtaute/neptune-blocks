@@ -52,4 +52,5 @@ export interface ContentEntity
     brandLogoDark: string,
     wideImage: string,
     link: string,
+    uid: string,
 }

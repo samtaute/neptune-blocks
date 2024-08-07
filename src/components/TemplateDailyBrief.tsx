@@ -1,5 +1,6 @@
 import { ContentEntity } from "../types/softbox";
-import PhotocardBlock from "./BlockPhotocard";
+import BlockEdge from "./BlockEdge";
+import BlockPhotocard from "./BlockPhotocard";
 
 type TemplateProps = {
   [key: string]: ContentEntity[];
@@ -11,7 +12,8 @@ function TemplateDailyBrief({ content }: { content: TemplateProps }) {
   console.log(numCategories)
   return (
     <>
-      <PhotocardBlock items={content['standard']} />
+      <BlockPhotocard items={content['standard'].slice(0,2)} />
+      <BlockEdge items ={content['standard'].slice(2,6)}/>
     </>
   );
 }

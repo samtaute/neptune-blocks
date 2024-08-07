@@ -19,7 +19,7 @@ function BlockPhotocard({ items }: { items: ContentEntity[] }) {
       {items.map((item) => {
         return (
           <PhotocardContainer
-            key={item.title}
+            key={item.uid}
             link={item.link}
             image={item.wideImage}
           >
@@ -49,7 +49,7 @@ function PhotocardContainer({
       style={backgroundImage}
       href={link}
       className={
-        "relative flex flex-col rounded-lg bg-cover h-[254px] justify-end p-4 mb-2"
+        "relative flex flex-col rounded-lg bg-cover h-[254px] justify-end p-4 mb-4"
       }
     >
       {children}
@@ -57,11 +57,11 @@ function PhotocardContainer({
   );
 }
 
-function PhotocardTitle({ title }: { title: string }) {
+export function PhotocardTitle({ title }: { title: string }) {
   return <h2 className="text-white text-base drop-shadow-sm font-semibold my-2">{title}</h2>;
 }
 
-function PhotocardLogo({ logo }: { logo: string }) {
+export function PhotocardLogo({ logo }: { logo: string }) {
   return (
     <div className="flex items-start">
       <img src={logo} alt="publisher logo" className="h-4" />
