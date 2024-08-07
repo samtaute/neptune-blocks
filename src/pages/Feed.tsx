@@ -1,5 +1,5 @@
 import { useLoaderData, useParams } from "react-router-dom";
-import { chooseTemplate } from "../lib/utils";
+import { chooseTemplate } from "../lib/chooseTemplate";
 import { cloneElement } from "react";
 import { PropsWithChildren } from "react";
 

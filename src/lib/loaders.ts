@@ -1,6 +1,6 @@
 import { LoaderFunctionArgs} from 'react-router-dom'
-import { getCategoriesFromKeyword } from './utils';
-import { fetchSoftboxContent } from './utils';
+import { getCategoriesFromKeyword } from './getCategories';
+import { fetchSoftboxContent } from './fetchSoftboxContent';
 
 export async function feedLoader({params}: LoaderFunctionArgs<{platform: string, language: string, keyword: string}>){
     const {keyword, language } = params; 
