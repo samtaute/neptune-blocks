@@ -2,16 +2,16 @@ import { ContentEntity } from "../types/softbox";
 import PhotocardBlock from "./BlockPhotocard";
 
 type TemplateProps = {
-    [key: string]: ContentEntity[]
-}
+  [key: string]: ContentEntity[];
+};
 
-function TemplateDailyBrief({content}: {content: TemplateProps}){
-    const categories = Object.keys(content); 
+function TemplateDailyBrief({ content }: { content: TemplateProps }) {
+  const categories = Object.keys(content);
 
-    return (
-        <div>
-            <PhotocardBlock items = {content[categories[0]]}/>
-        </div>
-    )
+  return (
+    <>
+      <PhotocardBlock items={content[categories[0]]} />
+    </>
+  );
 }
-export default TemplateDailyBrief; 
+export default TemplateDailyBrief;
