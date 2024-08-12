@@ -1,7 +1,7 @@
-import entertainmentData from '../../data/softbox-api/entertainment.json'
-import newsData from '../../data/softbox-api/news.json';
-import standardData from '../../data/softbox-api/standard.json'
-import { LookbookItem } from "../types/softbox";
+import entertainmentData from '../../../data/softbox-api/entertainment.json'
+import newsData from '../../../data/softbox-api/news.json';
+import standardData from '../../../data/softbox-api/standard.json'
+import { LookbookItem } from "./types";
 
 
 export async function fetchSoftboxContent(category: string, language: string){

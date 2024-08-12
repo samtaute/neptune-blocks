@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom"
-import Home from "../pages/Home"
-import FeedPage from "../pages/Feed"
+import Home from "../../pages/Home"
+import FeedPage from "../../pages/Feed"
 import { feedLoader } from "./loaders"
 
 
