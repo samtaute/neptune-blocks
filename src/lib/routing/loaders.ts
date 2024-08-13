@@ -1,7 +1,8 @@
 import { LoaderFunctionArgs} from 'react-router-dom'
-import { getCategoriesFromKeyword } from './getCategories';
-import { fetchSoftboxContent } from './fetchSoftboxContent';
+import { fetchSoftboxContent } from '../softbox-api/fetchSoftboxContent';
 
+
+//Sets up all the content libaries necessary to render a feed.
 export async function feedLoader({params}: LoaderFunctionArgs<{platform: string, language: string, keyword: string}>){
     const {keyword, language } = params; 
 
@@ -21,4 +22,22 @@ export async function feedLoader({params}: LoaderFunctionArgs<{platform: string,
         }   
     }
     return data; 
+}
+
+export async function pageLoader(){
+
+
+}
+
+
+
+
+// ---------------------------------------//
+// HELPER FUNCTIONS
+// ---------------------------------------//
+
+function getCategoriesFromKeyword(keyword: string){
+    //todo implement logic
+    console.log(keyword)
+    return ['news', 'entertainment', 'standard']
 }

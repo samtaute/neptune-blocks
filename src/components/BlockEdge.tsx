@@ -1,5 +1,5 @@
 import { PropsWithChildren } from "react";
-import { BlockProps } from "../types/props";
+import { BlockProps } from "../types/propsTypes";
 import { PhotocardLogo } from "./BlockPhotocard";
 
 function BlockEdge({ items }: BlockProps) {

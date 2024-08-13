@@ -1,4 +1,4 @@
-import { ContentEntity } from "../types/softbox";
+import { ContentEntity } from "../lib/softbox-api/types";
 import BlockEdge from "./BlockEdge";
 import BlockPhotocard from "./BlockPhotocard";
 

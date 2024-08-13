@@ -1,7 +1,7 @@
 import { useLoaderData, useParams } from "react-router-dom";
-import { chooseTemplate } from "../lib/chooseTemplate";
 import { cloneElement } from "react";
 import { PropsWithChildren } from "react";
+import TemplateDailyBrief from "../components/TemplateDailyBrief";
 
 function FeedPage() {
   const content = useLoaderData();
@@ -18,5 +18,11 @@ export default FeedPage;
 
 function FeedContainer({children}: PropsWithChildren){
     return <div className="mx-auto max-w-[450px] px-[20px] min-h-40 flex flex-col">{children}</div>
+}
+
+function chooseTemplate(platform: string, language: string, keyword:string){
+  //todo implement logic
+  console.log(platform, keyword, language)
+  return <TemplateDailyBrief content={{}}/>
 }
 

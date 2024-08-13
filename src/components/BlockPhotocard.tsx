@@ -9,7 +9,7 @@
 //     link: string,
 // }
 import { PropsWithChildren } from "react";
-import { ContentEntity } from "../types/softbox";
+import { ContentEntity } from "../lib/softbox-api/types";
 
 function BlockPhotocard({ items }: { items: ContentEntity[] }) {
   console.log(items);
