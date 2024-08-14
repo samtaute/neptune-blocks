@@ -1,11 +1,17 @@
 import { LoaderFunctionArgs} from 'react-router-dom'
 import { fetchSoftboxContent } from '../softbox-api/fetchSoftboxContent';
-
+import { initAds } from '../ads/initAds';
+import { DTPlatform } from '../../types/dtTypes';
 
 //Sets up all the content libaries necessary to render a feed.
 export async function feedLoader({params}: LoaderFunctionArgs<{platform: string, language: string, keyword: string}>){
-    const {keyword, language } = params; 
+    const {keyword, platform, language } = params; 
+    
+    //todo: need stronger type check here. maybe, maintain an array of acceptable platform values? 
 
+    initAds(platform as DTPlatform);
+    
+   
     //todo: what do i want to return if no data
     if(!keyword || !language){
         return; 
