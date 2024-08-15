@@ -9,7 +9,7 @@ function BlockEdge({ items }: BlockProps) {
         return (
           <a href={item.link} key={item.uid} className="block mb-4">
             <ImageContainer image={item.wideImage}></ImageContainer>
-            <PhotocardLogo logo ={item.brandLogoDark}/>
+            {item.brandLogoDark && <PhotocardLogo logo ={item.brandLogoDark}/>}
             <EdgeTitle title={item.title}/>
           </a>
         );

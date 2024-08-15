@@ -48,9 +48,9 @@ export interface ContentEntity
     title: string,
     description?: string,
     owner: string,
-    brandLogo: string,
-    brandLogoDark: string,
+    brandLogo?: string,
+    brandLogoDark?: string,
     wideImage: string,
     link: string,
-    uid: string,
+    uid?: string,
 }

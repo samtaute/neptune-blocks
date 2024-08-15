@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+#mp_ad_unit_adhesion{
+    width: 100%;
+    display: flex; 
+    justify-content: center; 
+}
