@@ -18,7 +18,6 @@ function TemplateDailyBrief({ content }: { content: TemplateProps }) {
       <BlockAd/>
       <BlockEdge items ={content['standard'].slice(1,6)}/>
       <BlockSponsored/>
-      
     </>
   );
 }

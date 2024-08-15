@@ -1,17 +1,26 @@
 import { PropsWithChildren } from "react";
 import { BlockProps } from "../types/propsTypes";
 import { PhotocardLogo } from "./BlockPhotocard";
+import ViewabilityWrapper from "./common/ViewabilityWrapper";
+import { useOutbrain } from "../lib/outbrain/useOutbrain";
 
-function BlockEdge({ items }: BlockProps) {
+function BlockEdge({ items, sponsored }: BlockProps) {
+const sponsoredItems = useOutbrain(sponsored ? true : false);  
+const blockItems = sponsoredItems.length > 0 ? sponsoredItems : items
+
   return (
     <>
-      {items.map((item) => {
+      {blockItems.map((item) => {
         return (
-          <a href={item.link} key={item.uid} className="block mb-4">
-            <ImageContainer image={item.wideImage}></ImageContainer>
-            {item.brandLogoDark && <PhotocardLogo logo ={item.brandLogoDark}/>}
-            <EdgeTitle title={item.title}/>
-          </a>
+          <ViewabilityWrapper key={item.uid} itemData={item}>
+            <a href={item.link} className="block mb-4">
+              <ImageContainer image={item.wideImage}></ImageContainer>
+              {item.brandLogoDark && (
+                <PhotocardLogo logo={item.brandLogoDark} />
+              )}
+              <EdgeTitle title={item.title} />
+            </a>
+          </ViewabilityWrapper>
         );
       })}
     </>
@@ -20,10 +29,13 @@ function BlockEdge({ items }: BlockProps) {
 
 export default BlockEdge;
 
-
 function EdgeTitle({ title }: { title: string }) {
-    return <h2 className="text-black text-xl drop-shadow-sm font-semibold my-2">{title}</h2>;
-  }
+  return (
+    <h2 className="text-black text-xl drop-shadow-sm font-semibold my-2">
+      {title}
+    </h2>
+  );
+}
 
 function ImageContainer({
   children,

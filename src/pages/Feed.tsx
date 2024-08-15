@@ -26,4 +26,3 @@ function chooseTemplate(platform: string, language: string, keyword:string){
   console.log(platform, keyword, language)
   return <TemplateDailyBrief content={{}}/>
 }
-
