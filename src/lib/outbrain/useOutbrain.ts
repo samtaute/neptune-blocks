@@ -2,22 +2,20 @@ import { ContentEntity } from "../softbox-api/types";
 import { checkScriptLoaded } from "../util/utils";
 import { useState, useEffect } from "react";
 
-const DUMMY_URL = "http://www.mobileposse.com/BLU/BLUNEWS/0000/EN";
-const DUMMY_WIDGET = "JS_6";
 const DUMMY_KEY = "MOBIL10GC607HEAPB660KCI89";
 
 
-export function useOutbrain(sponsoredFlag: boolean){
+export function useOutbrain(permalink: string, widgetId: string){
   const [sponsoredItems, setSponsoredItems] = useState<ContentEntity[]>([]);
 
   useEffect(() => {
     const callback = () => {
-      if(!sponsoredFlag) return; 
       const ob = new OutbrainCallbackWrapper(setSponsoredItems);
-      fetchOutbrainItems(ob);
+      const requestData = {permalink, widgetId, installationKey: DUMMY_KEY}
+      fetchOutbrainItems(ob, requestData);
     };
     checkScriptLoaded("OBR", callback, 5, 25); //executes callback if outbrain script has loaded. If not, retries up to 10 times at 25ms intervals
-  }, [sponsoredFlag]);
+  }, [permalink, widgetId]);
 
   return sponsoredItems
 
@@ -53,13 +51,8 @@ export function outbrainCallbackError(error: any) {
 }
 
 //todo -- logic for using correct url instead of dummy dat
-export function fetchOutbrainItems(ob: OutbrainCallbackWrapper) {
+export function fetchOutbrainItems(ob: OutbrainCallbackWrapper, requestData: {permalink: string, widgetId: string, installationKey: string}) {
   const w = window as any;
-  const requestData = {
-    permalink: DUMMY_URL,
-    widgetId: DUMMY_WIDGET,
-    installationKey: DUMMY_KEY,
-  };
   w.OBR.extern.callRecs(requestData,ob.outbrainCallback, outbrainCallbackError);
 }
 

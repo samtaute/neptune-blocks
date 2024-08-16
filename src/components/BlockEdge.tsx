@@ -2,15 +2,12 @@ import { PropsWithChildren } from "react";
 import { BlockProps } from "../types/propsTypes";
 import { PhotocardLogo } from "./BlockPhotocard";
 import ViewabilityWrapper from "./common/ViewabilityWrapper";
-import { useOutbrain } from "../lib/outbrain/useOutbrain";
 
-function BlockEdge({ items, sponsored }: BlockProps) {
-const sponsoredItems = useOutbrain(sponsored ? true : false);  
-const blockItems = sponsoredItems.length > 0 ? sponsoredItems : items
+function BlockEdge({items}: BlockProps) {
 
   return (
     <>
-      {blockItems.map((item) => {
+      {items.map((item) => {
         return (
           <ViewabilityWrapper key={item.uid} itemData={item}>
             <a href={item.link} className="block mb-4">

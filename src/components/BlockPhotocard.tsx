@@ -9,10 +9,10 @@
 //     link: string,
 // }
 import { PropsWithChildren } from "react";
-import { ContentEntity } from "../lib/softbox-api/types";
+import { BlockProps } from "../types/propsTypes";
 import ViewabilityWrapper from "./common/ViewabilityWrapper";
 
-function BlockPhotocard({ items }: { items: ContentEntity[] }) {
+function BlockPhotocard({ items }: BlockProps ) {
   console.log(items);
 
   return (

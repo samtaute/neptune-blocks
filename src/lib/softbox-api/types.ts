@@ -55,3 +55,9 @@ export interface ContentEntity
     uid: string,
     onViewed?: string,
 }
+
+export type ContentScheduleEntity = ContentEntity[]
+
+export type ContentStoreEntity = {
+    [key:string]: ContentScheduleEntity
+}
