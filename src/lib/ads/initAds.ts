@@ -1,18 +1,18 @@
 import { DTPlatform } from "../../types/dtTypes";
-import { injectScript } from "../utils";
+import { injectScript } from "../util/utils";
 
 
 //Prep the window to display ads. Needs a platform parameter in order load the correct pubwise scripts. 
 //1. Get pubwise script. (note: we are not loading the Pubwise prescript at the moment)
 //2 Inject pubwise script into the DOM.
-//3. Set up
+//3. Set up and enable PubAdsServices
 export function initAds(platform: DTPlatform){
     const w = window as any; 
 
     //todo: check if platform is valid. 
     
     const pubwiseScript = getPubwiseScript(platform)
-    injectScript(pubwiseScript); 
+    injectScript(pubwiseScript, {async: "async"}); 
 
     w.googletag.cmd.push(function () {
         const pubads = w.googletag.pubads(); //returns a reference to PubAdsService, which fetches and shows ads.
@@ -23,12 +23,6 @@ export function initAds(platform: DTPlatform){
       });
 
 }
-
-
-
-
-
-
 
 
 function getPubwiseScript(platform: DTPlatform){

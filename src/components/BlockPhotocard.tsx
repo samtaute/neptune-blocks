@@ -9,24 +9,26 @@
 //     link: string,
 // }
 import { PropsWithChildren } from "react";
-import { ContentEntity } from "../lib/softbox-api/types";
+import { BlockProps } from "../types/propsTypes";
+import ViewabilityWrapper from "./common/ViewabilityWrapper";
 
-function BlockPhotocard({ items }: { items: ContentEntity[] }) {
+function BlockPhotocard({ items }: BlockProps ) {
   console.log(items);
 
   return (
     <>
       {items.map((item) => {
         return (
-          <PhotocardContainer
-            key={item.uid}
-            link={item.link}
-            image={item.wideImage}
-          >
-            <PhotocardLogo logo={item.brandLogo} />
-            <PhotocardTitle title={item.title}></PhotocardTitle>
-            <PhotocardFooter/>
-          </PhotocardContainer>
+          <ViewabilityWrapper key={item.uid} itemData={item}>
+            <PhotocardContainer
+              link={item.link}
+              image={item.wideImage}
+            >
+              {item.brandLogo && <PhotocardLogo logo={item.brandLogo} />}
+              <PhotocardTitle title={item.title}></PhotocardTitle>
+              <PhotocardFooter />
+            </PhotocardContainer>
+          </ViewabilityWrapper>
         );
       })}
     </>
@@ -58,7 +60,11 @@ function PhotocardContainer({
 }
 
 export function PhotocardTitle({ title }: { title: string }) {
-  return <h2 className="text-white text-base drop-shadow-sm font-semibold my-2">{title}</h2>;
+  return (
+    <h2 className="text-white text-base drop-shadow-sm font-semibold my-2">
+      {title}
+    </h2>
+  );
 }
 
 export function PhotocardLogo({ logo }: { logo: string }) {
@@ -70,5 +76,9 @@ export function PhotocardLogo({ logo }: { logo: string }) {
 }
 
 function PhotocardFooter() {
-  return <div className="h-6 text-[#ededed] flex items-end justify-between"><div className="text-[11px] font-normal text-white">popular</div></div>;
+  return (
+    <div className="h-6 text-[#ededed] flex items-end justify-between">
+      <div className="text-[11px] font-normal text-white">popular</div>
+    </div>
+  );
 }

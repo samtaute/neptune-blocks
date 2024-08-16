@@ -48,9 +48,16 @@ export interface ContentEntity
     title: string,
     description?: string,
     owner: string,
-    brandLogo: string,
-    brandLogoDark: string,
+    brandLogo?: string,
+    brandLogoDark?: string,
     wideImage: string,
     link: string,
     uid: string,
+    onViewed?: string,
+}
+
+export type ContentScheduleEntity = ContentEntity[]
+
+export type ContentStoreEntity = {
+    [key:string]: ContentScheduleEntity
 }
